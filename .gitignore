@@ -5,5 +5,7 @@ venv/
 # ฐานข้อมูล
 db.sqlite3
 
+media/
+
 # ไฟล์เฉพาะ OS
 .DS_Store
