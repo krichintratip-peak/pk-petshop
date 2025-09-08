@@ -34,7 +34,7 @@ def post_detail(request, slug):
         'recent_articles': recent_articles,
         'product': recommended_products
     }
-    return render(request, 'blog/post_detail.html', context)
+    return render(request, 'blog/blog-detail.html', context)
 
 
 
