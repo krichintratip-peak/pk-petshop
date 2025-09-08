@@ -41,20 +41,13 @@
             <p class="text-danger">สินค้าหมด</p>
             {% endif %}
 
-            <!-- Affiliate Buttons -->
+            <!-- LINE Button -->
             <div class="mt-4">
-                {% if product.shopee_affiliate_link %}
-                <a href="{{ product.shopee_affiliate_link }}" target="_blank" rel="nofollow sponsored" 
-                   style="background-color: #ee4d2d; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; margin-right: 10px;">
-                    Buy on Shopee
+                <a href="{{ product.line_contact_link }}" target="_blank" rel="nofollow" 
+                   style="background-color: #06C755; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; display: inline-flex; align-items: center; font-weight: 600;">
+                    <i class="fab fa-line" style="margin-right: 8px; font-size: 1.2em;"></i>
+                    สั่งซื้อผ่าน LINE
                 </a>
-                {% endif %}
-                {% if product.lazada_affiliate_link %}
-                <a href="{{ product.lazada_affiliate_link }}" target="_blank" rel="nofollow sponsored" 
-                   style="background-color: #0071c2; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none;">
-                    Buy on Lazada
-                </a>
-                {% endif %}
             </div>
         </div>
     </div>
