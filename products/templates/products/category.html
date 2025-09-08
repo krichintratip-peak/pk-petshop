@@ -32,11 +32,6 @@
                     <p class="card-text">
                         <strong>ราคา: ฿{{ product.price }}</strong>
                     </p>
-                    {% if product.stock > 0 %}
-                        <p class="text-success">สินค้าคงเหลือ: {{ product.stock }}</p>
-                    {% else %}
-                        <p class="text-danger">สินค้าหมด</p>
-                    {% endif %}
                     <a href="{{ product.get_absolute_url }}" class="btn btn-primary">
                         ดูรายละเอียด
                     </a>
