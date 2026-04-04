@@ -1,6 +1,13 @@
 env/
 venv/
+.env
+docker.env
 *.pyc
+
+# Migration temporary files
+*.bak
+sqlite-data.json
+sqlite-data.utf8.json
 
 # ฐานข้อมูล
 db.sqlite3
