@@ -27,6 +27,11 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2)
     available = models.BooleanField(default=True)
     image = models.ImageField(upload_to='products/', blank=True)
+    line_contact_link = models.URLField(
+        max_length=500,
+        default='https://line.me/R/ti/p/@Dr.peakmaker',
+        help_text='ลิงก์สั่งซื้อผ่าน LINE (Dr.peakmaker)',
+    )
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 

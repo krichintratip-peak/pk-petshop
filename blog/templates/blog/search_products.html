@@ -1,0 +1,60 @@
+{% extends 'blog/base.html' %}
+{% block meta %}
+<title>ค้นหา: {{ search_query }} | Peakmaker Cat Shop</title>
+<meta name="description" content="ผลการค้นหาสินค้า {{ search_query }}">
+{% endblock %}
+{% block content %}
+<div class="container py-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">หน้าแรก</a></li>
+            <li class="breadcrumb-item active" aria-current="page">ค้นหา</li>
+        </ol>
+    </nav>
+
+    <h1 class="h3 mb-2">ค้นหาสินค้า</h1>
+    <p class="text-muted mb-4">คำค้น: <strong>{{ search_query }}</strong>
+        {% if found_count %}
+        — พบ {{ found_count }} รายการ
+        {% else %}
+        — ไม่พบสินค้า
+        {% endif %}
+    </p>
+
+    <form class="row g-2 mb-4" action="{% url 'product_search' %}" method="get" role="search">
+        <div class="col-md-8 col-lg-6">
+            <input type="search" name="q" class="form-control" placeholder="พิมพ์ชื่อสินค้าหรือคำอธิบาย" value="{{ search_query }}" aria-label="คำค้นหา">
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary">ค้นหา</button>
+        </div>
+    </form>
+
+    {% if products %}
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4">
+        {% for product in products %}
+        <div class="col">
+            <div class="card h-100">
+                {% if product.image %}
+                <a href="{{ product.get_absolute_url }}">
+                    <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}" style="height: 180px; object-fit: cover;">
+                </a>
+                {% endif %}
+                <div class="card-body d-flex flex-column">
+                    <h2 class="h6 card-title">{{ product.name }}</h2>
+                    <p class="card-text small text-muted flex-grow-1">{{ product.description|truncatewords:15 }}</p>
+                    <p class="mb-2"><strong class="text-success">฿{{ product.price }}</strong></p>
+                    <a href="{{ product.get_absolute_url }}" class="btn btn-primary btn-sm mt-auto">ดูรายละเอียด</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="alert alert-info">
+        ไม่พบสินค้าที่ตรงกับคำค้น ลองใช้คำสั้นลงหรือค้นหาชื่อหมวด เช่น ทรายแมว อาหารเม็ด
+    </div>
+    <p><a href="/" class="btn btn-outline-primary">กลับหน้าแรก</a></p>
+    {% endif %}
+</div>
+{% endblock %}

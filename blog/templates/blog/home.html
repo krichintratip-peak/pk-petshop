@@ -1,27 +1,51 @@
-{% extends 'blog/base.html' %} 
+{% extends 'blog/base.html' %}
 {% block meta %} <title>SCFS - จำหน่ายอาหารแมวทุกประเภท จัดส่งฟรีทั่วประเทศ</title>
 <meta name="description" content="ร้านอาหารแมวออนไลน์ที่ใหญ่ที่สุด มีสินค้าให้เลือกมากกว่า 1,000 รายการ พร้อมจัดส่งฟรีทั่วประเทศ รับประกันของแท้ 100% ราคาถูกกว่าห้าง"> 
 {% endblock %} 
 
-{% block content %} 
-<div class="container">
+{% block content %}
+{% load static %}
+<div class="container py-3">
     <!-- Hero Section -->
-    <div class="bg-light text-dark py-5 mb-5">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <h1 class="display-4 fw-bold">SCFS - จำหน่ายอาหารแมวทุกประเภท จัดส่งฟรีทั่วประเทศ</h1>
-                    <p class="lead">ร้านอาหารแมวออนไลน์ที่ใหญ่ที่สุด มีสินค้าให้เลือกมากกว่า 1,000 รายการ พร้อมจัดส่งฟรีทั่วประเทศ รับประกันของแท้ 100% ราคาถูกกว่าห้าง</p>
-                    <hr class="my-4">
-                    <p>กดเลือกซื้อ แล้วพบกับอาหารแมวที่แมวเหมียวของคุณต้องชอบ</p>
-                    <a class="btn btn-outline-dark btn-lg" href="/" role="button">เลือกซื้อเลย</a>
-                </div>
-                <div class="col-lg-6 d-none d-lg-block">
-                    <img src="https://www.purina.co.za/sites/default/files/2020-12/Product%20Listing%20Hero%20Cat%20Food.jpg" alt="Blog Hero Image" class="img-fluid rounded">
-                </div>
+    <div class="glass-hero text-dark py-5 px-4 px-lg-5 mb-5">
+        <div class="row align-items-center g-4">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold">Peakmaker Cat Shop - จำหน่ายอาหารแมวทุกประเภท จัดส่งฟรีทั่วประเทศ</h1>
+                <p class="lead">ร้านอาหารแมวออนไลน์ที่ใหญ่ที่สุด มีสินค้าให้เลือกมากกว่า 1,000 รายการ พร้อมจัดส่งฟรีทั่วประเทศ รับประกันของแท้ 100% ราคาถูกกว่าห้าง</p>
+                <hr class="my-4 opacity-50">
+                <p>กดเลือกซื้อ แล้วพบกับอาหารแมวที่แมวเหมียวของคุณต้องชอบ</p>
+                <a class="btn btn-primary btn-lg" href="/products/dry-cat-food/" role="button">เลือกซื้อเลย</a>
+            </div>
+            <div class="col-lg-6 d-none d-lg-block text-center">
+                <img src="{% static 'blog/images/blog-hero.jpg' %}"
+                     width="700" height="467"
+                     class="img-fluid hero-visual"
+                     style="max-height: 420px; width: 100%; object-fit: cover;"
+                     alt="Peakmaker Cat Shop — แมวและอาหารแมวคุณภาพ"
+                     fetchpriority="high"
+                     loading="eager">
             </div>
         </div>
     </div>
+
+    <!-- Quick Links -->
+    <section class="glass-hero text-dark py-4 px-4 px-lg-5 mb-5" aria-labelledby="quick-links-heading">
+        <h2 id="quick-links-heading" class="h4 fw-bold mb-3">ลิงก์ด่วน</h2>
+        <p class="text-muted mb-3">เลือกหมวดสินค้า อ่านบทความทรายแมว หรือสั่งซื้อผ่าน LINE ได้ทันที</p>
+        <div class="d-flex flex-wrap gap-2 align-items-center">
+            <a class="btn btn-outline-primary" href="/products/cat-litter/">ทรายแมว</a>
+            <a class="btn btn-outline-primary" href="/products/dry-cat-food/">อาหารเม็ด</a>
+            <a class="btn btn-outline-primary" href="/products/wet-cat-food/">อาหารเปียก</a>
+            <a class="btn btn-outline-primary" href="/products/cat-lick-treats/">ขนมแมวเลีย</a>
+            <a class="btn btn-outline-primary" href="/products/cat-supplements/">อาหารเสริมแมว</a>
+            <a class="btn btn-outline-secondary" href="{% url 'post_detail' slug='cat-litter-types-guide' %}">บทความ: เลือกทรายแมวให้เหมาะ</a>
+            <a class="btn btn-outline-secondary" href="{% url 'post_detail' slug='cat-supplement-feeding-guide' %}">บทความ: ให้อาหารเสริมแมว</a>
+            <a class="btn btn-line" href="{{ LINE_ORDER_URL }}" target="_blank" rel="noopener noreferrer">
+                <i class="bi bi-chat-dots-fill me-1" aria-hidden="true"></i>สั่งซื้อผ่าน LINE (@Dr.peakmaker)
+            </a>
+        </div>
+    </section>
+
     <section>
         <h2>อาหารแมว แยกตามหมวดหมู่</h2>
         <div class="row"> 

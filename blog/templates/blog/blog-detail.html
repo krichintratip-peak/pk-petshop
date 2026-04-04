@@ -3,19 +3,52 @@
 {% block meta %}
 <title>{{ single_post.title }}</title>
 <meta name="description" content="{{ single_post.description }}">
-<rel="canonical" href="{{ single_post.get_absolute_url }}">
+<link rel="canonical" href="{{ single_post.get_absolute_url }}">
 
 {% endblock %}
 
 {% block content %}
 <div class="container">
     <br>
-  <div class="col-sm-8">  
+  <div class="col-sm-8">
     <h1>{{ single_post.title }}</h1>
     <p>{{ single_post.description }}</p>
-    <img src="{{ single_post.featured_image.url }}" class="card-img-top" alt="{{ single_post.title }}">
+    {% if single_post.featured_image %}
+    <img src="{{ single_post.featured_image.url }}" class="card-img-top img-fluid rounded" alt="{{ single_post.title }}">
+    {% endif %}
     <br><br>
-    <p>{{ single_post.body }}</p>
+    <p style="white-space: pre-line;">{{ single_post.body }}</p>
+
+    {% if related_categories %}
+    <div class="mt-4">
+      <h3>หมวดสินค้าที่เกี่ยวข้อง</h3>
+      <ul class="list-inline">
+        {% for cat in related_categories %}
+        <li class="list-inline-item mb-2"><a class="btn btn-outline-primary btn-sm" href="{{ cat.get_absolute_url }}">{{ cat.name }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
+    {% if related_products %}
+    <div class="mt-4">
+      <h3>สินค้าแนะนำในหมวดนี้</h3>
+      <div class="row row-cols-2 g-3">
+        {% for p in related_products %}
+        <div class="col">
+          <div class="card h-100">
+            {% if p.image %}<img src="{{ p.image.url }}" class="card-img-top" alt="{{ p.name }}" style="object-fit:cover;height:120px;">{% endif %}
+            <div class="card-body py-2">
+              <h6 class="card-title mb-1">{{ p.name }}</h6>
+              <p class="card-text small mb-2">฿{{ p.price }}</p>
+              <a href="{{ p.get_absolute_url }}" class="btn btn-sm btn-primary">ดูสินค้า</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
   </div>
 </div>
 {% endblock %}

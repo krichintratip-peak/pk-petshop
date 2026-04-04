@@ -23,7 +23,13 @@ class Post(models.Model):
         null=True,
         blank=True
     )
-    author = models.ForeignKey(Author, on_delete=models.SET_NULL, null=True, related_name='posts') 
+    author = models.ForeignKey(Author, on_delete=models.SET_NULL, null=True, related_name='posts')
+    related_categories = models.ManyToManyField(
+        'products.Category',
+        related_name='related_posts',
+        blank=True,
+        help_text='หมวดสินค้าที่เกี่ยวข้องกับบทความนี้',
+    )
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
 

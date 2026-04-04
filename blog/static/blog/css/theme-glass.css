@@ -1,0 +1,314 @@
+/* Pastel Glassmorphism + 3D depth — SCFS / Peakmaker Cat Shop */
+
+:root {
+  --pastel-lilac: #e8dff5;
+  --pastel-mint: #d4f0f0;
+  --pastel-blush: #fce4ec;
+  --pastel-sky: #e3f2fd;
+  --pastel-lavender: #f3e5f5;
+  --glass-bg: rgba(255, 255, 255, 0.38);
+  --glass-border: rgba(255, 255, 255, 0.55);
+  --glass-highlight: rgba(255, 255, 255, 0.75);
+  --text-deep: #3d3557;
+  --accent-primary: #8b7ecf;
+  --accent-secondary: #5ec4d4;
+  --shadow-soft: 0 8px 32px rgba(100, 80, 140, 0.12);
+  --shadow-lift: 0 20px 48px rgba(120, 90, 180, 0.18);
+}
+
+@keyframes pastel-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body.glass-theme {
+  min-height: 100vh;
+  color: var(--text-deep);
+  background: linear-gradient(
+    125deg,
+    var(--pastel-lilac) 0%,
+    var(--pastel-mint) 22%,
+    var(--pastel-blush) 48%,
+    var(--pastel-sky) 72%,
+    var(--pastel-lavender) 100%
+  );
+  background-size: 280% 280%;
+  animation: pastel-shift 22s ease infinite;
+}
+
+#sparkle-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.site-shell {
+  position: relative;
+  z-index: 1;
+}
+
+/* —— Navbar glass —— */
+body.glass-theme .navbar {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-soft), inset 0 1px 0 var(--glass-highlight);
+}
+
+body.glass-theme .navbar-brand {
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  background: linear-gradient(135deg, #7c6bcf, #4db8c9);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: none;
+}
+
+body.glass-theme .nav-link {
+  color: var(--text-deep) !important;
+  border-radius: 0.5rem;
+  margin: 0 0.15rem;
+  transition: background 0.25s ease, transform 0.2s ease;
+}
+
+body.glass-theme .nav-link:hover,
+body.glass-theme .nav-link.active {
+  background: rgba(255, 255, 255, 0.45);
+  transform: translateY(-1px);
+}
+
+body.glass-theme .dropdown-menu {
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 1rem;
+  box-shadow: var(--shadow-lift);
+}
+
+body.glass-theme .dropdown-item:hover {
+  background: rgba(196, 181, 253, 0.35);
+}
+
+body.glass-theme .form-control {
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--glass-border);
+  border-radius: 0.75rem;
+}
+
+body.glass-theme .navbar-toggler {
+  border-color: rgba(61, 53, 87, 0.2);
+}
+
+/* —— Cards: glass + 3D hover —— */
+body.glass-theme .card {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(14px) saturate(150%);
+  -webkit-backdrop-filter: blur(14px) saturate(150%);
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 1.25rem !important;
+  box-shadow:
+    var(--shadow-soft),
+    inset 0 1px 0 var(--glass-highlight);
+  transform-style: preserve-3d;
+  transition:
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s ease;
+}
+
+body.glass-theme .card:hover {
+  transform: perspective(900px) rotateX(3deg) rotateY(-2deg) translateY(-6px);
+  box-shadow: var(--shadow-lift), inset 0 1px 0 var(--glass-highlight);
+}
+
+body.glass-theme .card-img-top {
+  border-radius: 1.1rem 1.1rem 0 0 !important;
+}
+
+/* —— Buttons —— */
+body.glass-theme .btn-primary {
+  background: linear-gradient(135deg, #8b7ecf, #6bc9d8);
+  border: none;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 16px rgba(139, 126, 207, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+body.glass-theme .btn-primary:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(139, 126, 207, 0.45);
+}
+
+body.glass-theme .btn-outline-primary {
+  border-radius: 0.75rem;
+  border-width: 2px;
+  border-color: var(--accent-primary);
+  color: var(--accent-primary);
+  background: rgba(255, 255, 255, 0.25);
+}
+
+body.glass-theme .btn-outline-primary:hover {
+  background: rgba(196, 181, 253, 0.45);
+  border-color: var(--accent-primary);
+  color: var(--text-deep);
+}
+
+body.glass-theme .btn-outline-dark,
+body.glass-theme .btn-outline-success {
+  border-radius: 0.75rem;
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(61, 53, 87, 0.35);
+  color: var(--text-deep);
+}
+
+body.glass-theme .btn-outline-success {
+  border-color: rgba(94, 196, 212, 0.6);
+}
+
+/* —— Hero glass panel —— */
+.glass-hero {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid var(--glass-border);
+  border-radius: 1.75rem;
+  box-shadow: var(--shadow-lift), inset 0 1px 0 var(--glass-highlight);
+  transform-style: preserve-3d;
+}
+
+.glass-hero .hero-visual {
+  border-radius: 1.25rem;
+  box-shadow:
+    0 12px 40px rgba(100, 80, 140, 0.2),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.4);
+  transform: perspective(1000px) rotateY(-4deg);
+  transition: transform 0.5s ease;
+}
+
+.glass-hero:hover .hero-visual {
+  transform: perspective(1000px) rotateY(0deg) scale(1.02);
+}
+
+/* —— Typography sections —— */
+body.glass-theme h1,
+body.glass-theme h2,
+body.glass-theme h3 {
+  color: var(--text-deep);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+body.glass-theme section h2 {
+  position: relative;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+body.glass-theme section h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 4rem;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--accent-primary), var(--accent-secondary));
+  opacity: 0.7;
+}
+
+/* —— Breadcrumb —— */
+body.glass-theme .breadcrumb {
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(10px);
+  padding: 0.65rem 1rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--glass-border);
+}
+
+/* —— Accordion FAQ —— */
+body.glass-theme .accordion-item {
+  background: rgba(255, 255, 255, 0.35);
+  border: 1px solid var(--glass-border);
+  border-radius: 0.75rem !important;
+  margin-bottom: 0.5rem;
+  overflow: hidden;
+}
+
+body.glass-theme .accordion-button {
+  background: rgba(255, 255, 255, 0.4);
+  color: var(--text-deep);
+}
+
+body.glass-theme .accordion-button:not(.collapsed) {
+  background: rgba(196, 181, 253, 0.35);
+  color: var(--text-deep);
+  box-shadow: none;
+}
+
+/* —— Footer —— */
+body.glass-theme footer {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-top: 1px solid var(--glass-border);
+  margin-top: 3rem !important;
+}
+
+body.glass-theme footer a {
+  color: var(--text-deep);
+  opacity: 0.85;
+}
+
+body.glass-theme footer a:hover {
+  opacity: 1;
+  color: var(--accent-primary);
+}
+
+/* —— Utilities —— */
+body.glass-theme .text-success {
+  color: #2a9d8f !important;
+}
+
+body.glass-theme .text-muted {
+  color: rgba(61, 53, 87, 0.55) !important;
+}
+
+/* —— LINE order CTA —— */
+body.glass-theme .btn-line {
+  --bs-btn-color: #fff;
+  --bs-btn-bg: #06c755;
+  --bs-btn-border-color: #06c755;
+  --bs-btn-hover-color: #fff;
+  --bs-btn-hover-bg: #05b34c;
+  --bs-btn-hover-border-color: #05b34c;
+  --bs-btn-focus-shadow-rgb: 6, 199, 85;
+  --bs-btn-active-color: #fff;
+  --bs-btn-active-bg: #049e42;
+  --bs-btn-active-border-color: #049e42;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  body.glass-theme {
+    animation: none;
+    background-size: 100% 100%;
+  }
+  body.glass-theme .card:hover {
+    transform: none;
+  }
+  #sparkle-canvas {
+    display: none;
+  }
+}

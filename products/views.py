@@ -29,9 +29,12 @@ def category(request, slug):
     products = category.products.filter(available=True)
     faqs = category.faqs.all()
 
+    related_posts = category.related_posts.all().order_by('-date_updated')
+
     context = {
         'category': category,
         'products': products,
         'faqs': faqs,
+        'related_posts': related_posts,
     }
     return render(request, 'products/category.html', context)
