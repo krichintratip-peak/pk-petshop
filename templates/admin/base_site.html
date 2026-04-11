@@ -1,0 +1,21 @@
+{% extends "admin/base.html" %}
+{% load i18n %}
+{% load site_meta %}
+
+{% block title %}{% if subtitle %}{{ subtitle }} | {% endif %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+
+{% block branding %}
+<div id="site-name"><a href="{% url 'admin:index' %}">{{ site_header|default:_('Django administration') }}</a></div>
+<p class="admin-site-version" style="margin:0.35rem 0 0;font-size:0.8125rem;font-weight:600;opacity:0.95;">เวอร์ชัน {% site_version %} · อัปเดตล่าสุด {% site_last_updated %}</p>
+{% if user.is_anonymous %}
+  {% include "admin/color_theme_toggle.html" %}
+{% endif %}
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
+
+{% block footer %}
+<p style="text-align: center; padding: 0.5rem 1rem; color: var(--body-fg, #333); font-size: 0.8125rem; font-weight: 600; margin: 0;">
+  เวอร์ชัน {% site_version %} · อัปเดตล่าสุด {% site_last_updated %}
+</p>
+{% endblock %}

@@ -1,4 +1,5 @@
 {% load static %}
+{% load site_meta %}
 <!DOCTYPE html>
 <html lang="th">
 <head>
@@ -16,8 +17,8 @@
     <canvas id="sparkle-canvas" aria-hidden="true"></canvas>
     <div class="site-shell">
         <nav class="navbar navbar-expand-lg navbar-light sticky-top">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="/">SCFS</a>
+            <div class="container-fluid flex-wrap">
+                <a class="navbar-brand mb-0 align-self-center" href="/">SCFS</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -51,6 +52,11 @@
 
         <footer class="text-dark py-4 mt-5">
             <div class="container">
+                <div class="site-footer-version row">
+                    <div class="col-12 text-center py-2 px-2">
+                        <span class="site-footer-version__text">เวอร์ชัน {% site_version %} · อัปเดตล่าสุด {% site_last_updated %}</span>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-lg-4 mb-4 mb-lg-0">
                         <h5>Peakmaker Cat Shop</h5>
@@ -87,7 +93,7 @@
                 <div class="row mt-3">
                     <div class="col-12">
                         <hr class="border-secondary border-opacity-25">
-                        <p class="text-center mb-0">© 2024 Peakmaker Cat Shop. All rights reserved.</p>
+                        <p class="text-center mb-0 mt-2">© 2024 Peakmaker Cat Shop. All rights reserved.</p>
                     </div>
                 </div>
             </div>

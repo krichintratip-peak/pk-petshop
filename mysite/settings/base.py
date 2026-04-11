@@ -3,6 +3,7 @@ Shared Django settings for mysite (loaded by dev.py / prod.py).
 """
 
 import os
+from datetime import date
 from pathlib import Path
 
 # mysite/settings/base.py -> project root is two levels up
@@ -35,7 +36,7 @@ ROOT_URLCONF = 'mysite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -89,3 +90,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LINE_ORDER_URL = 'https://line.me/R/ti/p/@Dr.peakmaker'
+
+# เวอร์ชันและวันอัปเดตล่าสุด — ปรับทั้งคู่ทุกครั้งที่ deploy / มีการอัปเดตเว็บ
+# วันที่ใช้ปี ค.ศ. ใน date(); แสดงผลในเทมเพลตเป็น dd-mm-yyyy (ปี พ.ศ.)
+SITE_VERSION = '1.0.1'
+SITE_LAST_UPDATED = date(2026, 4, 11)

@@ -263,6 +263,21 @@ body.glass-theme footer {
   margin-top: 3rem !important;
 }
 
+body.glass-theme .site-footer-version {
+  border-bottom: 1px solid var(--glass-border);
+  margin-bottom: 1rem;
+  background: rgba(255, 255, 255, 0.42);
+  border-radius: 0.75rem;
+}
+
+body.glass-theme .site-footer-version__text {
+  display: inline-block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-deep) !important;
+  letter-spacing: 0.02em;
+}
+
 body.glass-theme footer a {
   color: var(--text-deep);
   opacity: 0.85;
